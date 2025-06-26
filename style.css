@@ -1,153 +1,142 @@
-@import url(https://fonts.google.com/specimen/Manrope);
+/* Import Google Fonts - Manrope font family with various weights */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
-
-
-
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+/* Universal selector - applies to ALL elements */
+* {
+  padding: 0;        /* Remove default padding from all elements */
+  margin: 0;         /* Remove default margins from all elements */
+  box-sizing: border-box;  /* Include padding and border in element's total width/height */
 }
 
-:root{
- --blue-200 : hsl(193, 38%, 86%);
- --green-300 : hsl(150, 100%, 66%);
- --blue-600 : hsl(217, 19%, 38%);
- --blue-900: hsl(217, 19%, 24%);
- --blue-950: hsl(218, 23%, 16%);
+/* CSS Custom Properties (Variables) - we define our color scheme here */
+/* Using HSL (Hue, Saturation, Lightness) for easier color manipulation */
+:root {
+  --blue-200: hsl(193, 38%, 86%);   /* Light blue for advice text */
+  --green-300: hsl(150, 100%, 66%); /* Bright green for accents and button */
+  --blue-600: hsl(217, 19%, 38%);   /* Medium blue (not used in current design) */
+  --blue-900: hsl(217, 19%, 24%);   /* Dark blue for advice card background */
+  --blue-950: hsl(218, 23%, 16%);   /* Very dark blue for page background */
 }
 
-
-body{
-  font-size: 1.5rem;
-  background-color: var(--blue-950);
-  font-family: "Manrope", sans-serif;
-
-  /* font-weight: 800; */
+/* Body styles - applies to the entire page */
+body {
+  font-size: 1.5rem;                    /* Base font size for the entire app */
+  background-color: var(--blue-950);    /* Dark background using our CSS variable */
+  font-family: "Manrope", sans-serif;   /* Apply our imported Google font */
+  font-weight: 800;                     /* Bold font weight for better readability */
 }
 
-main{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  padding: 10px;
+/* Main container positioning */
+/* We use absolute positioning and transform to perfectly center the advice card */
+main {
+  position: absolute;           /* Remove from normal document flow */
+  top: 50%;                    /* Move down 50% from top of viewport */
+  left: 50%;                   /* Move right 50% from left of viewport */
+  transform: translate(-50%, -50%);  /* Move back up and left by 50% of element's own size */
+  padding: 10px;               /* Small padding to prevent edge touching on very small screens */
 }
 
+/* The main advice card styling */
 .box {
-  
-  background-color: var(--blue-900);
-  height: auto;
-  width: auto;
-  padding: 20px;
-  border-radius: 0.7rem;
-  
-  
+  background-color: var(--blue-900);   /* Dark blue background using CSS variable */
+  height: auto;                        /* Height adjusts to content */
+  width: auto;                         /* Width adjusts to content */
+  padding: 20px;                       /* Internal spacing around content */
+  border-radius: 0.7rem;               /* Rounded corners for modern look */
 }
 
-.advice-number{
-  color: var(--green-300);
-  font-size: 1rem;
-  text-transform: uppercase;
-  justify-self: center;
+/* Advice number/ID styling */
+.advice-number {
+  color: var(--green-300);      /* Bright green color for contrast */
+  font-size: 1rem;             /* Smaller than body text */
+  text-transform: uppercase;    /* Convert text to ALL CAPS */
+  justify-self: center;         /* Center alignment (when parent uses grid) */
 }
 
-
-.advice-text{
-  color: var(--blue-200);
-  text-align: center;
-  padding: 20px;
-  font-size: 1.5rem;
-  font-weight: 800;
+/* Main advice text styling */
+.advice-text {
+  color: var(--blue-200);       /* Light blue for good readability on dark background */
+  text-align: center;           /* Center the text horizontally */
+  padding: 20px;                /* Space around the text for breathing room */
+  font-size: 1.5rem;            /* Same as body font size */
+  font-weight: 800;             /* Bold weight for emphasis */
 }
 
-.dice{
-  padding: 15px;
-  
-  width: auto;
-  height: auto;
-  justify-self: center;
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  cursor: pointer;
-  border: none;
-  outline: none;
-  border-radius: 50%;
-  
-  background-color: var(--green-300);
-
+/* Dice button styling */
+.dice {
+  padding: 15px;                /* Internal spacing around the dice icon */
+  width: auto;                  /* Width adjusts to content */
+  height: auto;                 /* Height adjusts to content */
+  justify-self: center;         /* Center when parent uses grid */
+  position: absolute;           /* Position relative to nearest positioned parent (.box) */
+  bottom: -20px;                /* Position 20px below the bottom of .box */
+  left: 50%;                    /* Move to horizontal center */
+  transform: translateX(-50%);  /* Adjust back by 50% of button's width for perfect centering */
+  cursor: pointer;              /* Show hand cursor on hover to indicate clickability */
+  border: none;                 /* Remove default button border */
+  outline: none;                /* Remove default focus outline */
+  border-radius: 50%;           /* Make it perfectly circular */
+  background-color: var(--green-300);  /* Bright green background */
 }
 
-.img{
-  justify-self: center;
-  margin-bottom: 1.5rem;
+/* Divider image container */
+.img {
+  justify-self: center;         /* Center the image */
+  margin-bottom: 1.5rem;        /* Space below the image */
 }
 
-.dice:hover{
-  box-shadow: 0 0 20px  hsl(150, 100%, 66%);
+/* Dice button image styling */
+.dice img {
+  display: flex;                /* Use flexbox for centering */
+  justify-content: center;      /* Center horizontally */
+  align-items: center;          /* Center vertically */
 }
 
-.dice img{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/* RESPONSIVE DESIGN RULES */
+/* We show different divider images based on screen size */
 
-
-
-
+/* Default state - hide desktop image, show mobile */
 .desktop {
-    display: none;
-  }
+  display: none;    /* Hide desktop version by default */
+}
 
-  .mobile {
-    display: block;
-  }
+.mobile {
+  display: block;   /* Show mobile version by default */
+}
 
-
- @media (min-width: 990px) {
-
+/* Large screens (990px and wider) - show desktop image */
+@media (min-width: 990px) {
   .desktop {
-    display: block;
+    display: block;   /* Show desktop version */
   }
-
-  .mobile {
-    display: none;
-  }
-
- }  
   
-
-
-
-
-
-@media (max-width:375px) {
-  .desktop {
-    display: none;
-  }
-
   .mobile {
-    display: block;
+    display: none;    /* Hide mobile version */
   }
 }
 
-
-
-.attribution { 
-  font-size: 11px;
-  text-align: center;
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
- }
-
-
-.attribution a {
- color: hsl(228, 45%, 44%);
+/* Small screens (375px and smaller) - ensure mobile image shows */
+@media (max-width: 375px) {
+  .desktop {
+    display: none;    /* Hide desktop version */
+  }
+  
+  .mobile {
+    display: block;   /* Show mobile version */
+  }
 }
 
+/* Footer attribution styling */
+.attribution {
+  font-size: 11px;              /* Small text size */
+  text-align: center;           /* Center the text */
+  position: absolute;           /* Position relative to viewport */
+  bottom: 10%;                  /* 10% from bottom of screen */
+  left: 50%;                    /* Move to horizontal center */
+  transform: translateX(-50%);  /* Adjust for perfect centering */
+}
 
+/* Attribution link styling */
+.attribution a {
+  color: hsl(228, 45%, 44%);    /* Blue color for links */
+}
